@@ -35,7 +35,7 @@ def sha256(M):
 
     M = padding(M, block_size)
 
-    # M is an array of 32 bit integers
+    # M is an array of 8 bit integers
     M_bit_len = len(M) * 8
 
     N = int(M_bit_len/block_size)
@@ -135,9 +135,8 @@ def string_to_int_list(in_str):
 
 if __name__ == "__main__":
     data_in = sys.argv[1]
-    data_in = "68656c6c6f20776f726c64"
-    array_32bit_int = string_to_int_list(data_in)
+    array_8bit_int = string_to_int_list(data_in)
 
-    sha256_out = sha256(array_32bit_int);
+    sha256_out = sha256(array_8bit_int);
     out = ''.join('{:04x} '.format(x) for x in sha256_out)
     print("{}".format(out));
